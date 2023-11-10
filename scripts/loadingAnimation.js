@@ -39,14 +39,12 @@ export const loadingAnimation = async () => {
  * @returns {void}
  */
 const scrollThroughListItems = list => {
-  [...list].forEach((node, i) => {
-    setTimeout(() => {
-      node.style.visibility = "visible";
-    }, 100 * i);
+  [...list].forEach(async (node, i) => {
+    await pause(100 * i);
+    node.style.visibility = "visible";
 
-    setTimeout(() => {
-      node.style.visibility = "hidden";
-    }, 100 * i + 99);
+    await pause(99);
+    node.style.visibility = "hidden";
   });
 };
 
